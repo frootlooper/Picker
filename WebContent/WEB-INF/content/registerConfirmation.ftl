@@ -1,0 +1,1 @@
+<span>Your new user has been created successfully</span>

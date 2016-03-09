@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+ 
+<struts>
+    <package name="default" namespace="/" extends="struts-default">
+        <interceptors>    
+            <interceptor name="loginCheck" class="com.Picker.interceptors.CheckLogin" />
+            <interceptor-stack name="authenticationStack">
+            	<interceptor-ref name="loginCheck"/>
+            	<interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+        </interceptors>
+        
+        <global-results>
+        	<result name="login" type="redirect">/login</result>
+        </global-results>
+        
+        
+        
+    </package>     
+    
+    <constant name="struts.convention.result.path" value="/WEB-INF/jsp/" />
+    <constant name="struts.devMode" value="true" />
+    <constant name="struts.action.extension" value="action," />
+    <constant name="struts.custom.i18n.resources" value="test" />
+    <constant name="struts.convention.default.parent.package" value="default"/>
+    
+</struts>
