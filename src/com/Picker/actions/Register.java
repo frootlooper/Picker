@@ -12,15 +12,17 @@ import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
 import com.Picker.data.Database;
 import com.Picker.model.User;
 
+/*
+ * The purpose of this action class is to handle creation of a
+ * new user.
+ */
+
 @InterceptorRef(value="defaultStack")
 @Results(
 	    @Result(name="registerSuccess", location="registerConfirmation.ftl")
 	    )
 public class Register extends ActionSupport {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private boolean postBack;
 	private String enteredUsername;
@@ -30,12 +32,23 @@ public class Register extends ActionSupport {
 	private static Database db = new Database();
 	private static StrongPasswordEncryptor passwordEncryptor = new StrongPasswordEncryptor();
 
+	/*
+	 * Input action to avoid showing validation errors on first load
+	 * (non-Javadoc)
+	 * @see com.opensymphony.xwork2.ActionSupport#input()
+	 */
 	@Action("register-input")
 	public String input()
 	{
 		return "register";
 	}
 	
+	/*
+	 * If the form has been submitted, check if the user was created successully.
+	 * Otherwise, just load form.
+	 * (non-Javadoc)
+	 * @see com.opensymphony.xwork2.ActionSupport#execute()
+	 */
 	@Override
 	@Action("register")
 	public String execute() {
@@ -45,28 +58,30 @@ public class Register extends ActionSupport {
 		return SUCCESS;
 	}
 	
+	/*
+	 * Attempts to register the user.
+	 * Returns ajax if there was a problem.
+	 * Returns registerSuccess if success.
+	 */
 	public String registerUser() {
-		User user = new User();
-		user.setFirstName(enteredFirstName);
-		user.setLastName(enteredLastName);
-		user.setUsername(enteredUsername);
-		
-		String encryptedPassword = passwordEncryptor.encryptPassword(enteredPassword);
-		user.setPassword(encryptedPassword);
 		boolean exists = db.usernameExists(enteredUsername);
 		if (exists) {
-			addActionError("username already exists");
+			addActionError("Username already exists");
 			return "ajax";
 		} else {
+			//Create user object
+			User user = new User();
+			user.setFirstName(enteredFirstName);
+			user.setLastName(enteredLastName);
+			user.setUsername(enteredUsername);
+			String encryptedPassword = passwordEncryptor.encryptPassword(enteredPassword);
+			user.setPassword(encryptedPassword);
+			
+			//Add new user to the database
 			db.addUser(user);
-			if (true) {
-				enteredFirstName = "";
-				enteredLastName = "";
-				enteredPassword = "";
-				enteredUsername = "";
-			}
+			
+			return "registerSuccess";
 		}
-		return "registerSuccess";
 	}
 
 	public boolean isPostBack() {

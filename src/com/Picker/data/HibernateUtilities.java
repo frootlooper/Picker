@@ -1,5 +1,9 @@
 package com.Picker.data;
 
+/*
+ * This utility uses hibernate to create a database session factory
+ * given the configuration file and data model classes.
+ */
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;

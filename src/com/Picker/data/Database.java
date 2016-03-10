@@ -8,14 +8,25 @@ import org.jasypt.util.password.StrongPasswordEncryptor;
 
 import com.Picker.model.User;
 
+/*
+ * The purpose of this class is to handle all database connections
+ * using the HibernateUtilies.
+ */
 public class Database {
 
 	private SessionFactory factory;
 	
+	/*
+	 * Constructor to initialize the database session factory using
+	 * the hibernateUtilities class which contains configuration info.
+	 */
 	public Database() {
 		factory = HibernateUtilities.getSessionFactory();
 	}
 	
+	/*
+	 * Add the user to the database as a new record.
+	 */
 	public void addUser(User user) {
 		Session session = factory.openSession();
 		try {
@@ -27,6 +38,12 @@ public class Database {
 		}
 	}
 	
+	/*
+	 * Check that a row exists that contains the given username and
+	 * the encrypted version of the entered password.
+	 * Returns true if success.
+	 * Return false otherwise.
+	 */
 	public boolean authenticateUser(String username, String password) {
 		Session session = factory.openSession();
 		boolean success = false;
@@ -45,6 +62,11 @@ public class Database {
 		return success;
 	}
 	
+	/*
+	 * Get all user information from the database given their username.
+	 * Returns user object.
+	 * Object is null if the user did not exist or other error occurred. 
+	 */
 	public User getUser(String username) {
 		User u = null;
 		Session session = factory.openSession();
@@ -60,6 +82,11 @@ public class Database {
 		return u;
 	}
 	
+	/*
+	 * Checks to see if username exists in the database.
+	 * Returns true if so.
+	 * Returns false otherwise.
+	 */
 	public boolean usernameExists(String username) {
 		boolean result = false;
 		Session session = factory.openSession();

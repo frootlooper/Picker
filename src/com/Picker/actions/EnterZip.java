@@ -26,18 +26,15 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.Picker.model.Restaurant;
 import com.Picker.model.ZipCode;
 
-@InterceptorRef(value="authenticationStack")
-@Results(
-	    @Result(name="redirect", location="login.ftl")
-	    )
+@InterceptorRef(value="authStack") //User must be authenticated
 public class EnterZip extends ActionSupport implements SessionAware {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
+	//Move apikey to properties file?
 	private static String apikey = "AIzaSyD5DKLxRQV-Dd5oaN48cXsA34bICRUns7M";
 	private boolean postBack;
+	//Defaulted to my zip code for now, plan to default to each user's
+	//individual home zip code in the future
 	private Integer enteredZip = 43235;
 	private ZipCode zipCode;
 	private List<Restaurant> restaurants;
@@ -48,11 +45,8 @@ public class EnterZip extends ActionSupport implements SessionAware {
 	@Override
 	@Action("enterzip")
 	public String execute() {
-		if (session.containsKey("currentUsername")) {
+		if (session.containsKey("currentUser")) {
 			System.out.println("session contains user");
-		} else {
-			System.out.println("no user in session");
-			return "redirect";
 		}
 		if (isPostBack()) {
 			return getLocationFromZip(enteredZip);

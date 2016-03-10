@@ -15,6 +15,11 @@ import com.Picker.model.User;
 
 import com.opensymphony.xwork2.validator.annotations.*;
 
+/*
+ * Purpose of this action class is to handle form input for
+ * the application's login page.
+ */
+
 @InterceptorRef(value="defaultStack")
 @Results(
 	    @Result(name="redirect", location="index.ftl")
@@ -31,13 +36,23 @@ public class Login extends ActionSupport implements SessionAware {
 	private static Database db = new Database();
 	private Map<String, Object> session;
 	
+	/*
+	 * Input action to avoid showing field validation errors on first load(non-Javadoc)
+	 * @see com.opensymphony.xwork2.ActionSupport#input()
+	 */
 	@Action("login-input")
 	public String input()
 	{
-		System.out.println("In login-input action");
 		return "login";
 	}
 	
+	/*
+	 * If the form has been submitted, check entered credentials against
+	 * the user in the database and return the authentication result.
+	 * Otherwise, simply load the page.
+	 * (non-Javadoc)
+	 * @see com.opensymphony.xwork2.ActionSupport#execute()
+	 */
 	@Override
 	@Action("login")
 	public String execute() {
@@ -47,16 +62,21 @@ public class Login extends ActionSupport implements SessionAware {
 		return SUCCESS;
 	}
 	
+	/*
+	 * Checks if the provided username and password are valid.
+	 * If they are, return "redirect" which will direct the page to 
+	 * the welcome screen.
+	 * Otherwise, add an action error and return ajax to display error
+	 * to the user.
+	 */
 	public String authenticate() {
-		System.out.println("in authenticate function");
 		boolean success = db.authenticateUser(enteredUsername, enteredPassword);
 		if (success) {
-			System.out.println("Authentication a success");
 			User user = db.getUser(enteredUsername);
 			session.put("currentUser", user);
 			return "redirect";
 		} else {
-			addActionError("Login credentials invalid.");
+			addActionError("Invalid user credentials!");
 			return "ajax";
 		}
 	}

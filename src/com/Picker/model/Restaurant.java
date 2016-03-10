@@ -1,6 +1,5 @@
 /*
  * This is a model of each restaurant that is pulled from Google API.
- * Then it is saved in the database for faster searching, etc.
  */
 
 package com.Picker.model;

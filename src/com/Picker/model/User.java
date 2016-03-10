@@ -3,6 +3,11 @@ package com.Picker.model;
 import javax.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
+/*
+ * This is the object model for a user of the application.
+ * Self-explanatory and mapped to the database using hibernate annotations.
+ */
+
 @Entity
 @Table(name="picker_users")
 public class User {
