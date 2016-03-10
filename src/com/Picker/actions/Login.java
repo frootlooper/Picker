@@ -22,7 +22,7 @@ import com.opensymphony.xwork2.validator.annotations.*;
 
 @InterceptorRef(value="defaultStack")
 @Results(
-	    @Result(name="redirect", location="index.ftl")
+	    @Result(name="redirect", location="welcome.ftl")
 	    )
 public class Login extends ActionSupport implements SessionAware {
 
