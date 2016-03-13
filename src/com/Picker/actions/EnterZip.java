@@ -27,7 +27,7 @@ import com.Picker.model.Restaurant;
 import com.Picker.model.ZipCode;
 
 @InterceptorRef(value="authStack") //User must be authenticated
-public class EnterZip extends ActionSupport implements SessionAware {
+public class EnterZip extends ActionSupport {
 
 	private static final long serialVersionUID = 1L;
 	//Move apikey to properties file?
@@ -35,26 +35,23 @@ public class EnterZip extends ActionSupport implements SessionAware {
 	private boolean postBack;
 	//Defaulted to my zip code for now, plan to default to each user's
 	//individual home zip code in the future
-	private Integer enteredZip = 43235;
+	private Integer enteredZip;
 	private ZipCode zipCode;
 	private List<Restaurant> restaurants;
 	private int enteredRadius = 5000;
-	private Map<String, Object> session;
 	private String currentUsername;
 
 	@Override
 	@Action("enterzip")
 	public String execute() {
-		if (session.containsKey("currentUser")) {
-			System.out.println("session contains user");
-		}
 		if (isPostBack()) {
-			return getLocationFromZip(enteredZip);
+			setLocationFromZip(enteredZip);
+			return getRestaurantList();
 		}
 		return SUCCESS;
 	}
 	
-	public String getLocationFromZip(int zip) {
+	public void setLocationFromZip(int zip) {
 		setZipCode(new ZipCode());
 		getZipCode().setCode(zip);
 		
@@ -78,8 +75,6 @@ public class EnterZip extends ActionSupport implements SessionAware {
 			
 		getZipCode().setLatitude((NElat+SWlat)/2);
 		getZipCode().setLongitude((NElng+SWlng)/2);
-
-		return getRestaurantList();
 	}
 	
 	public String getRestaurantList() {
@@ -202,11 +197,6 @@ public class EnterZip extends ActionSupport implements SessionAware {
 
 	public void setRestaurants(List<Restaurant> restaurants) {
 		this.restaurants = restaurants;
-	}
-
-	@Override
-	public void setSession(Map<String, Object> session) {
-		this.session = session;
 	}
 
 	public String getCurrentUsername() {

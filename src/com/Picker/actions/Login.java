@@ -6,8 +6,6 @@ import java.util.Map;
 
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.InterceptorRef;
-import org.apache.struts2.convention.annotation.Result;
-import org.apache.struts2.convention.annotation.Results;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.Picker.data.Database;
@@ -21,14 +19,8 @@ import com.opensymphony.xwork2.validator.annotations.*;
  */
 
 @InterceptorRef(value="defaultStack")
-@Results(
-	    @Result(name="redirect", location="welcome.ftl")
-	    )
 public class Login extends ActionSupport implements SessionAware {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private boolean postBack;
 	private String enteredUsername;
@@ -74,7 +66,7 @@ public class Login extends ActionSupport implements SessionAware {
 		if (success) {
 			User user = db.getUser(enteredUsername);
 			session.put("currentUser", user);
-			return "redirect";
+			return "toWelcome";
 		} else {
 			addActionError("Invalid user credentials!");
 			return "ajax";

@@ -26,9 +26,9 @@ public class CheckLogin implements Interceptor {
         
         if (user == null) {
         	return "nologin";
+        } else {		
+        	return invocation.invoke();
         }
-		
-		return invocation.invoke();
 	}
 	
 	@Override

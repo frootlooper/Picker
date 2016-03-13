@@ -15,6 +15,7 @@
         
         <global-results>
         	<result name="nologin" type="redirect">login-input</result>
+        	<result name="toWelcome" type="redirect">welcome</result>
         </global-results>
         
     </package>     
