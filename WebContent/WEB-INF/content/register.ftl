@@ -1,6 +1,6 @@
 <#include "head.ftl">
 
-<div id="pageContainer">
+<div id="pageContainer" class="center">
 	<div id="registerFormContainer">
 		<h2>Register</h2>
 

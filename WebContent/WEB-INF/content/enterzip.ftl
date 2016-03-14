@@ -1,4 +1,4 @@
-<div id="enterZipContainer">
+<div id="enterZipContainer" class="center">
 	<div>
 		<@s.form id="getZipForm" action="enterzip" cssClass="form-group">
 			<@s.hidden name="postBack" value="true" />

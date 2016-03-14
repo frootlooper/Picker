@@ -1,5 +1,5 @@
 @CHARSET "ISO-8859-1";
-#loginFormContainer, #registerFormContainer, #enterZipContainer {
+.center {
 	width: 250px;
 	margin-left: auto;
 	margin-right: auto;

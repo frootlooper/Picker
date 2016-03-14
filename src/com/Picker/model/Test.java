@@ -16,27 +16,14 @@ public class Test {
 
 	public static void main(String[] args) throws IOException {
 		
-		String username = "root2";
+		User u = new User();
+		u.setFirstName("Gwen");
+		u.setLastName("M");
+		u.setUsername("gwenm");
+		u.setPassword("test");
+		u.setId("d75e6885-9357-481b-9a23-882cc3f05bd6");
 		
-		SessionFactory factory = HibernateUtilities.getSessionFactory();
-		Session session = factory.openSession();
-		try {
-			session.beginTransaction();
-			
-			Database db = new Database();
-			boolean success = db.usernameExists(username);
-			
-			session.getTransaction().commit();
-			
-			if (success) {
-				System.out.println("user exists");
-			} else {
-				System.out.println("user doesn't exist");
-			}
-			
-		} finally {
-			session.close();
-		}
-		factory.close();
+		Database db = new Database();		
+		db.updateUser(u);
 	}	
 }

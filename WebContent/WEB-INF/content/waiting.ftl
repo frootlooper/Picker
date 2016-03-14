@@ -11,14 +11,18 @@
 
 <@sj.head/>
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<meta http-equiv="refresh" content="2;url=<@s.url includeParams='all' />"/>
+
+<meta http-equiv="refresh" content="2;url=<@s.url />"/>
 
 </head>
 <body>
 
 <#include "navbar.ftl">
 
-<i class="fa fa-spinner fa-spin fa-3x"></i>
+<div class="center">
+	<span>Your request is being processed...</span>
+	<i class="fa fa-spinner fa-spin fa-3x"></i>
+</div>
 
 </body>
 </html>

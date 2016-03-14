@@ -39,6 +39,24 @@ public class Database {
 	}
 	
 	/*
+	 * Update the user's record in the database
+	 * Return true if successfully and false otherwise
+	 */
+	public boolean updateUser(User user) {
+		Session session = factory.openSession();
+		boolean result = false;
+		try {
+			session.beginTransaction();
+			session.update(user);
+			session.getTransaction().commit();
+			result = true;
+		} finally {
+			session.close();
+		}
+		return result;
+	}
+	
+	/*
 	 * Check that a row exists that contains the given username and
 	 * the encrypted version of the entered password.
 	 * Returns true if success.
