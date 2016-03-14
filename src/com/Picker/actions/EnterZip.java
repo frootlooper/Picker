@@ -16,6 +16,8 @@ import javax.json.JsonValue;
 
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.InterceptorRef;
+import org.apache.struts2.convention.annotation.Result;
+import org.apache.struts2.convention.annotation.Results;
 
 import javax.json.JsonArray;
 
@@ -23,15 +25,17 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.Picker.model.Restaurant;
 import com.Picker.model.ZipCode;
 
-@InterceptorRef(value="authStack") //User must be authenticated
+@InterceptorRef(value="authAndLoadingStack") //User must be authenticated
+@Results({
+    @Result(name="wait", location="waiting.ftl"),
+    @Result(name="ready", location="enterzip-results.ftl")
+})
 public class EnterZip extends ActionSupport {
 
 	private static final long serialVersionUID = 1L;
 	//Move apikey to properties file?
 	private static String apikey = "AIzaSyD5DKLxRQV-Dd5oaN48cXsA34bICRUns7M";
 	private boolean postBack;
-	//Defaulted to my zip code for now, plan to default to each user's
-	//individual home zip code in the future
 	private Integer enteredZip;
 	private ZipCode zipCode;
 	private List<Restaurant> restaurants;
@@ -135,7 +139,7 @@ public class EnterZip extends ActionSupport {
 		
 		System.out.println(restaurants.size());
 		
-		return "ajax";
+		return "ready";
 	}
 	
 	public JsonObject getJSONFromURL(URL url) {
