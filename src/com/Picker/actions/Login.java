@@ -69,7 +69,7 @@ public class Login extends ActionSupport implements SessionAware {
 			return "toWelcome";
 		} else {
 			addActionError("Invalid user credentials!");
-			return "ajax";
+			return "login";
 		}
 	}
 

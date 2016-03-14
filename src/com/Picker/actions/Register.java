@@ -67,7 +67,7 @@ public class Register extends ActionSupport {
 		boolean exists = db.usernameExists(enteredUsername);
 		if (exists) {
 			addActionError("Username already exists");
-			return "ajax";
+			return "register";
 		} else {
 			//Create user object
 			User user = new User();

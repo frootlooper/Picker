@@ -7,18 +7,15 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import javax.json.Json;
 import javax.json.JsonObject;
 import javax.json.JsonReader;
+import javax.json.JsonValue;
 
-import org.apache.struts2.interceptor.SessionAware;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.InterceptorRef;
-import org.apache.struts2.convention.annotation.Result;
-import org.apache.struts2.convention.annotation.Results;
 
 import javax.json.JsonArray;
 
@@ -111,7 +108,7 @@ public class EnterZip extends ActionSupport {
 			
 			//Get restaurant list
 			JsonArray arr = json.getJsonArray("results");
-			Iterator it = arr.iterator();
+			Iterator<JsonValue> it = arr.iterator();
 			while (it.hasNext()) {
 				Restaurant r = new Restaurant();
 				JsonObject obj = (JsonObject) it.next();
@@ -132,7 +129,6 @@ public class EnterZip extends ActionSupport {
 			try {
 				TimeUnit.SECONDS.sleep(5);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		} while (nextPageToken != null);

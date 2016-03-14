@@ -1,21 +1,26 @@
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<#include "head.ftl">
 
-<@sj.head/>
+<div id="pageContainer">
+	<div id="registerFormContainer">
+		<h2>Register</h2>
 
-<script type="text/javascript">
+		<@s.if test="hasActionErrors()">
+   			<div class="errors">
+      			<@s.actionerror/>
+   			</div>
+		</@s.if>
 
-</script>
+		<@s.form id="registerForm" action="register" validate="true" cssClass="form-group">
+			<@s.hidden name="postBack" value="true" />
+			<@s.textfield name="enteredUsername" placeholder="Username" cssClass="form-control form-group clear" />
+			<@s.textfield name="enteredFirstName" placeholder="First Name" cssClass="form-control form-group clear" />
+			<@s.textfield name="enteredLastName" placeholder="Last Name" cssClass="form-control form-group clear" />
+			<@s.password name="enteredPassword" placeholder="Password" cssClass="form-control form-group clear" />
+			<@sj.submit value="Register" id="registerFormSubmit" formIds="registerForm" button="true" cssClass="btn btn-default" />
+		</@s.form>
 
-</head>
-<body>
-
-<div id="result">
-<#include "register-ajax.ftl">
+		<@s.a href="/Picker/login-input">Return to login</@s.a>
+	</div>
 </div>
 
-<@s.a href="/Picker/login-input">Return to login</@s.a>
-
-</body>
-</html>
+<#include "footer.ftl">
