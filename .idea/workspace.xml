@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cbe39a56-c062-450e-9fcf-eb48a480856d" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/WebContent/WEB-INF/content/index.jsp" afterPath="$PROJECT_DIR$/WebContent/WEB-INF/content/index.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.classpath" afterPath="$PROJECT_DIR$/.classpath" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.settings/org.eclipse.wst.common.project.facet.core.xml" afterPath="$PROJECT_DIR$/.settings/org.eclipse.wst.common.project.facet.core.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebContent/WEB-INF/content/enterzip.ftl" afterPath="$PROJECT_DIR$/WebContent/WEB-INF/content/enterzip.ftl" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/Picker/actions/EnterZip.java" afterPath="$PROJECT_DIR$/src/com/Picker/actions/EnterZip.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Picker.eml" afterPath="$PROJECT_DIR$/RestaurantChooser.eml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/Picker.iml" afterPath="$PROJECT_DIR$/RestaurantChooser.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.project" afterPath="$PROJECT_DIR$/.project" />
     </list>
     <ignored path="Picker.iws" />
     <ignored path=".idea/workspace.xml" />
