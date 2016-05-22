@@ -1,4 +1,4 @@
-package com.Picker.model;
+package com.RestaurantChooser.model;
 
 import javax.persistence.*;
 

@@ -1,14 +1,9 @@
-package com.Picker.model;
+package com.RestaurantChooser.model;
 
 import java.io.IOException;
 
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.jasypt.util.password.StrongPasswordEncryptor;
-
-import com.Picker.data.Database;
-import com.Picker.data.HibernateUtilities;
+import com.RestaurantChooser.data.Database;
 
 public class Test {
 	

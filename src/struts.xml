@@ -6,7 +6,7 @@
 <struts>
    <package name="default" namespace="/" extends="struts-default">
         <interceptors>    
-            <interceptor name="loginCheck" class="com.Picker.interceptors.CheckLogin" />
+            <interceptor name="loginCheck" class="com.RestaurantChooser.interceptors.CheckLogin" />
             
             <interceptor-stack name="authStack">
             	<interceptor-ref name="loginCheck"/>

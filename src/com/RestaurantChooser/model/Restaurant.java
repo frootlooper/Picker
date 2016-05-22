@@ -2,7 +2,7 @@
  * This is a model of each restaurant that is pulled from Google API.
  */
 
-package com.Picker.model;
+package com.RestaurantChooser.model;
 
 import java.util.List;
 

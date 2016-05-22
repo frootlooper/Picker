@@ -1,4 +1,4 @@
-package com.Picker.actions;
+package com.RestaurantChooser.actions;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,8 +22,8 @@ import org.apache.struts2.convention.annotation.Results;
 import javax.json.JsonArray;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.Picker.model.Restaurant;
-import com.Picker.model.ZipCode;
+import com.RestaurantChooser.model.Restaurant;
+import com.RestaurantChooser.model.ZipCode;
 
 @InterceptorRef(value="authAndLoadingStack") //User must be authenticated
 @Results({

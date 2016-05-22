@@ -1,4 +1,4 @@
-package com.Picker.actions;
+package com.RestaurantChooser.actions;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -8,8 +8,8 @@ import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.InterceptorRef;
 import org.apache.struts2.interceptor.SessionAware;
 
-import com.Picker.data.Database;
-import com.Picker.model.User;
+import com.RestaurantChooser.data.Database;
+import com.RestaurantChooser.model.User;
 
 import com.opensymphony.xwork2.validator.annotations.*;
 

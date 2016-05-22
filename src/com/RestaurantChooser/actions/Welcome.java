@@ -1,4 +1,4 @@
-package com.Picker.actions;
+package com.RestaurantChooser.actions;
 
 import java.util.Map;
 

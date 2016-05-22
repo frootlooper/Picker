@@ -1,4 +1,4 @@
-package com.Picker.data;
+package com.RestaurantChooser.data;
 
 /*
  * This utility uses hibernate to create a database session factory
@@ -18,7 +18,7 @@ public class HibernateUtilities {
 		try
 		{
 			Configuration configuration = new Configuration()
-					.addAnnotatedClass(com.Picker.model.User.class)
+					.addAnnotatedClass(com.RestaurantChooser.model.User.class)
 					.configure("hibernate.cfg.xml");
 			
 			StandardServiceRegistryBuilder serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());

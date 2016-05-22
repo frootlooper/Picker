@@ -1,4 +1,4 @@
-package com.Picker.actions;
+package com.RestaurantChooser.actions;
 
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.InterceptorRef;
@@ -9,8 +9,8 @@ import org.jasypt.util.password.StrongPasswordEncryptor;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.validator.annotations.RegexFieldValidator;
 import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
-import com.Picker.data.Database;
-import com.Picker.model.User;
+import com.RestaurantChooser.data.Database;
+import com.RestaurantChooser.model.User;
 
 /*
  * The purpose of this action class is to handle creation of a

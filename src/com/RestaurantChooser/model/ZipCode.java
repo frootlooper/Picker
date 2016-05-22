@@ -1,4 +1,4 @@
-package com.Picker.model;
+package com.RestaurantChooser.model;
 
 /*
  * This class is the data model of a zip code.

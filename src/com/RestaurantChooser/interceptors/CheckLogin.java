@@ -1,8 +1,8 @@
-package com.Picker.interceptors;
+package com.RestaurantChooser.interceptors;
 
 import java.util.Map;
 
-import com.Picker.model.User;
+import com.RestaurantChooser.model.User;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.Interceptor;
 
