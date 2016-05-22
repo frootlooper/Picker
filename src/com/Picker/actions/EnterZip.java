@@ -33,7 +33,7 @@ import com.Picker.model.ZipCode;
 public class EnterZip extends ActionSupport {
 
 	private static final long serialVersionUID = 1L;
-	//Move apikey to properties file?
+	//TODO: Move apikey to properties file?
 	private static String apikey = "AIzaSyD5DKLxRQV-Dd5oaN48cXsA34bICRUns7M";
 	private boolean postBack;
 	private Integer enteredZip;
@@ -94,6 +94,7 @@ public class EnterZip extends ActionSupport {
 				if (nextPageToken != null) {
 					urlString = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?&key="+apikey+"&pagetoken="+nextPageToken;
 				}
+				System.out.println(urlString);
 				url = new URL(urlString);
 			} catch (MalformedURLException e) {
 				System.out.println("Created a malformed URL");
@@ -102,6 +103,8 @@ public class EnterZip extends ActionSupport {
 			
 			//Get JSON
 			JsonObject json = getJSONFromURL(url);
+			
+			//If we're on page 2+, check that it's loaded
 			
 			//Check for page token, if any. Will return null if it does not exist
 			if (json.getJsonString("next_page_token") != null) {
